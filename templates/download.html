@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internee.pk | Secure Download</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            width: 500px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .icon { font-size: 60px; margin-bottom: 15px; }
+        h1 { color: #2d6a4f; font-size: 24px; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; margin-bottom: 25px; }
+        .file-info {
+            background: #f0f7f0;
+            border: 2px solid #2d6a4f;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .file-info h3 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .file-info p { color: #666; font-size: 13px; margin: 0; }
+        .signed-url-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            word-break: break-all;
+            font-size: 11px;
+            color: #555;
+            text-align: left;
+        }
+        .signed-url-box strong { color: #333; display: block; margin-bottom: 5px; }
+        .btn {
+            display: inline-block;
+            padding: 13px 30px;
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            width: 100%;
+        }
+        .btn:hover { background: #1b4332; }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #856404;
+        }
+        .back-link {
+            display: block;
+            margin-top: 15px;
+            color: #2d6a4f;
+            text-decoration: none;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">🔗</div>
+        <h1>Secure Download Link Generated</h1>
+        <p>Your signed URL is ready. Share it securely.</p>
+
+        <div class="file-info">
+            <h3>📄 {{ filename }}</h3>
+            <p>File is AES-256 encrypted at rest and decrypted on download</p>
+        </div>
+
+        <div class="signed-url-box">
+            <strong>🔐 Signed URL (expires in 1 hour):</strong>
+            {{ signed_url }}
+        </div>
+
+        <a href="{{ signed_url }}" class="btn">⬇️ Download Decrypted File</a>
+
+        <div class="warning">
+            ⚠️ This link expires in <strong>1 hour</strong>. Do not share publicly.
+        </div>
+
+        <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+    </div>
+</body>
+</html>
